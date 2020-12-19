@@ -1,0 +1,121 @@
+{% load static %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" type="text/css" href="{% static 'css/rigest.css' %}"  crossorigin="anonymous">
+
+<div class="container">
+        <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Please sign up for Python Drive <small>It's free!</small></h3>
+            </div>
+            <div class="panel-body">
+              <form role="form" method='POST' , action=""> {% csrf_token %}
+               
+                    <div class="form-group">
+                      <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="User Name" required>
+              
+                    
+                </div>
+
+             
+
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" required>
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password" required>
+                    </div>
+                  </div>
+                </div>
+                
+                <input type="submit" value="Register" class="btn btn-info btn-block" id="submit">
+                  <span id='message'></span>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- password validation  -->
+
+    <script type="text/javascript">
+      var usr = function(){
+        var username = $("#first_name").val();
+
+      $.ajax({
+        url: '/validate/',
+        data: {
+          'username': username
+        },
+        dataType: 'json',
+        success: function (data) {
+          
+
+          if (data.is_taken) {
+             $('#message').html('A user with this username already exists.').css('color', 'red');
+            
+             $("#submit").attr("disabled", "disabled");
+          } 
+        }
+      });
+
+      }
+
+        $('#password, #password_confirmation').on('keyup', function () {
+            if ($('#password').val() != $('#password_confirmation').val()) {
+               $("#submit").attr("disabled", "disabled");
+              
+               $('#message').html('Not Matching').css('color', 'red');
+               usr()
+            } 
+
+             if ($('#password').val() == $('#password_confirmation').val()) {
+              $("#submit").removeAttr("disabled");
+              
+              $('#message').html('Matching').css('color', 'green');
+              usr()
+            } 
+           
+          });
+
+
+  $('#password').change(function(){
+    var password = $('#password').val();
+
+     $.ajax({
+        url: '/v_pass/',
+        data: {
+          'password': password
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.valid) {
+             $('#message').html('invalid password').css('color', 'red');
+            
+             $("#submit").attr("disabled", "disabled");
+          } 
+        }
+      });
+
+
+
+  }) ;
+
+      $("#first_name").change(function () {
+      $('#message').html('')
+
+    usr()
+
+    });
+
+    </script>

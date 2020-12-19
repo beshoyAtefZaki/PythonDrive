@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1> Home </h1>
+
+
+<div class="row">
+{% for i in data %}
+<div class="col-4">
+<div class="card border-success mb-3" style="max-width: 18rem;">
+  <div class="card-header bg-transparent border-success"> {{ i.title }} </div>
+  <div class="card-body text-success">
+    <h5 class="card-title"> {{ i.content }} </h5>
+    <p class="card-text"> Uploaded By :- {{i.user.username }}</p>
+  </div>
+  <div class="card-footer bg-transparent border-success"><a href="{{ i.file_name.url }}" download>  Download </a> </div>
+</div>
+</div>
+{% endfor %}
+</div>
+
+
+{% endblock %}

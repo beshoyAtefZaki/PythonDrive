@@ -1,0 +1,112 @@
+api doc
+
+headers = {'Authorization': "token ae23bea427b41a5:778f36b96b3b2ff"}
+for sales and purchase invoice
+
+url = 'http://itqan.alfahhad.net/api/method/frappe.auth.get_sales_purchase'
+data =None or {"in_type" : "Purchase" ,"Sales" ,
+				"year": any year (2019)}
+
+request get(url , header= header , data =data)
+
+return list [{"sales":[sles_data] ."purchase""[purchase_data]}]
+
+
+
+for sales and purchase order 
+url = 'http://itqan.alfahhad.net/api/method/frappe.auth.sales_purchase_orders'
+data =None or {"in_type" :'Sales Order' or 'Purchase Order' }
+return list [{"sales":[sles_data] ."purchase""[purchase_data]}]
+
+request get(url , header= header , data =data)
+
+
+python code 
+data=None
+itqan_secret = "778f36b96b3b2ff"
+itqan_key= "ae23bea427b41a5"
+headers = {'Authorization': "token ae23bea427b41a5:778f36b96b3b2ff"}
+r = 'http://itqan.alfahhad.net/api/method/frappe.auth.sales_purchase_orders'
+request = requests.get(r, headers=headers ,data=data)
+print(request.text)
+
+
+
+
+company     
+Almazaia 
+api-key
+c76064a05859019
+api-secret 
+6675f3e7e6cd89e
+request url 
+'http://mazaya.alfahhad.net/api/method/frappe.alfahad.sales_purchase_orders'
+
+company     
+zuffar -  alfahad-travel
+api-key
+ed1f805833727bc
+api-secret 
+d8db3e4c32fe1bb
+request url 
+http://traval.alfahhad.net/api/method/frappe.alfahad.sales_purchase_orders
+
+
+
+company     
+Rassen
+api-key
+867868002a0987f
+api-secret 
+b312be3c650c4ef
+request url 
+http://alraseen.alfahhad.net/api/method/frappe.alfahad.sales_purchase_orders
+
+company     
+mada-trading
+api-key
+1acf96ba46d3650
+api-secret 
+34412954d06cced
+request url 
+https://erp1.mada.trading/api/method/frappe.alfahad.sales_purchase_orders
+
+
+company     
+alwefaq
+api-key
+2778b717ec8da6d
+api-secret 
+2890ac9e88f5226
+request url 
+http://erp1.wosco.com.sa/api/method/frappe.alfahad.sales_purchase_orders
+
+company     
+
+api-key
+
+api-secret 
+
+request url 
+
+
+
+
+company     
+
+api-key
+
+api-secret 
+
+request url 
+
+
+
+company     
+
+api-key
+
+api-secret 
+
+request url 
+
