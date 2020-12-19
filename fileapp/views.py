@@ -93,7 +93,7 @@ def serch_in_files(request):
 					pass
 		# else :
 	 
-		# for i in FilesData.objects.filter(query_all):
+		
 	
 		return render(request , "home.html" , data)
 
